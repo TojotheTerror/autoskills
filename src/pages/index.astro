@@ -393,6 +393,7 @@ const skillsMap = [...SKILLS_MAP].sort((a: any, b: any) => {
           const row: HTMLSpanElement[] = []
           const lineEl = document.createElement('div')
           lineEl.style.height = '1lh'
+          lineEl.style.lineHeight = '1'
           for (let c = 0; c < cols; c++) {
             const ch = line[c] ?? ' '
             const span = document.createElement('span')
@@ -479,9 +480,9 @@ const skillsMap = [...SKILLS_MAP].sort((a: any, b: any) => {
     const bannerGap = ' '.repeat(Math.max(1, 39 - bannerTitle.length - ver.length - 3))
 
     const BANNER = [
-      "┌─┐┬ ┬┌┬┐┌─┐┌─┐┬┌─┬┬  ┬  ┌─┐",
-      "├─┤│ │ │ │ │└─┐├┴┐││  │  └─┐",
-      "┴ ┴└─┘ ┴ └─┘└─┘┴ ┴┴┴─┘┴─┘└─┘",
+      "   ┌─┐┬ ┬┌┬┐┌─┐┌─┐┬┌─┬┬  ┬  ┌─┐",
+      "   ├─┤│ │ │ │ │└─┐├┴┐││  │  └─┐",
+      "   ┴ ┴└─┘ ┴ └─┘└─┘┴ ┴┴┴─┘┴─┘└─┘",
     ]
 
     const TECH_NAMES = ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'Supabase', 'Astro']
