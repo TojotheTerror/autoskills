@@ -364,27 +364,17 @@ const skillsMap = [...SKILLS_MAP].sort((a: any, b: any) => {
       await navigator.clipboard.writeText('npx autoskills')
     })
 
-    // ── ASCII logo animation ─────────────────────────────────
-    {
-      const LOGO_LINES = [
-        ' █████╗ ██╗   ██╗████████╗ ██████╗ ███████╗██╗  ██╗██╗██╗     ██╗     ███████╗',
-        '██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝',
-        '███████║██║   ██║   ██║   ██║   ██║███████╗█████╔╝ ██║██║     ██║     ███████╗',
-        '██╔══██║██║   ██║   ██║   ██║   ██║╚════██║██╔═██╗ ██║██║     ██║     ╚════██║',
-        '██║  ██║╚██████╔╝   ██║   ╚██████╔╝███████║██║  ██╗██║███████╗███████╗███████║',
-        '╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝',
-      ]
-
+    function PrintAsciiWithAnimation (ascii: string[]) {
       const START_COLOR = '#3f3f46'  // zinc-700 (gris clarito)
       const END_COLOR = '#f4f4f5'    // zinc-100 (blanco)
 
       const logo = document.getElementById('ascii-logo')!
-      const cols = Math.max(...LOGO_LINES.map(l => l.length))
-      const rows = LOGO_LINES.length
+      const cols = Math.max(...ascii.map(l => l.length))
+      const rows = ascii.length
 
       // Build grid
       const grid: HTMLSpanElement[][] = []
-      for (const line of LOGO_LINES) {
+      for (const line of ascii) {
         const row: HTMLSpanElement[] = []
         const lineEl = document.createElement('div')
         lineEl.style.height = '1lh'
@@ -430,6 +420,20 @@ const skillsMap = [...SKILLS_MAP].sort((a: any, b: any) => {
       }
 
       requestAnimationFrame(animate)
+    }
+
+    // ── ASCII logo animation ─────────────────────────────────
+    {
+      const LOGO_LINES = [
+        ' █████╗ ██╗   ██╗████████╗ ██████╗ ███████╗██╗  ██╗██╗██╗     ██╗     ███████╗',
+        '██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗██╔════╝██║ ██╔╝██║██║     ██║     ██╔════╝',
+        '███████║██║   ██║   ██║   ██║   ██║███████╗█████╔╝ ██║██║     ██║     ███████╗',
+        '██╔══██║██║   ██║   ██║   ██║   ██║╚════██║██╔═██╗ ██║██║     ██║     ╚════██║',
+        '██║  ██║╚██████╔╝   ██║   ╚██████╔╝███████║██║  ██╗██║███████╗███████╗███████║',
+        '╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚══════╝',
+      ]
+
+      PrintAsciiWithAnimation(LOGO_LINES)      
     }
 
     // ── Terminal animation ────────────────────────────────────
